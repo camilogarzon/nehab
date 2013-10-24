@@ -15,12 +15,11 @@ public MyProcessingSketch(){
 	public void setup() {
 		
 		size(640, 480);
-
+		//se crea objeto SimpleOpenNI
 		context = new SimpleOpenNI(this);
-		// enable depthMap generation
+		// Habilito sensor de profundidad
 		context.enableDepth();
-
-		// enable skeleton generation for all joints
+		// habilito para funcion de skeletondata
 		context.enableUser();
 
 	}
@@ -34,7 +33,6 @@ public MyProcessingSketch(){
 		IntVector blabla = new IntVector();
 		context.update();
 		context.getUsers(blabla); // <----------------!!!!!!!!!!!!!
-		// int userId = blabla.get(0);
 		if (context.getCoM(1, com)) {
 			context.convertRealWorldToProjective(com, com2d);
 			stroke(100, 255, 0);
@@ -54,8 +52,7 @@ public MyProcessingSketch(){
 			// get the first user
 			int userId2 = blabla.get(0);
 
-			context.getJointPositionSkeleton(userId2,
-					SimpleOpenNI.SKEL_RIGHT_HAND, jointPos);
+			context.getJointPositionSkeleton(userId2,SimpleOpenNI.SKEL_RIGHT_HAND, jointPos);
 			PVector convertedRightHand = new PVector();
 			// println(jointPos);
 
