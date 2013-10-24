@@ -1,5 +1,9 @@
 asdasd
 una linea de camilo
+<<<<<<< HEAD
 
 linea alejo
 
+=======
+conflicto
+>>>>>>> d5e6b38ec1b7013399e6dde3630b19902a12dd46
