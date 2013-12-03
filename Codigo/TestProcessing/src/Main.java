@@ -1,10 +1,14 @@
+import processing.core.PApplet;
+
 public class Main {
 	
-	public static void main(String[] args) {
-		System.out.print("alejo");
-		MyProcessingSketch alejo;
-		alejo = new MyProcessingSketch();
+	
+		  public static void main(String args[]) {
+			  //  PApplet.main(new String[] { "--present", "MyProcessingSketch" });
+			    MyProcessingSketch a = new MyProcessingSketch();
+			  }
+
 		
-	}
+	
 
 }

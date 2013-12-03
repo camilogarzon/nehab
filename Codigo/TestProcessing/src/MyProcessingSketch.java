@@ -1,11 +1,13 @@
 import processing.core.*;
 import SimpleOpenNI.*;
+import processing.core.PApplet;
 
-public class MyProcessingSketch extends PApplet {
+public class MyProcessingSketch  extends PApplet{
 	SimpleOpenNI context;
 	PVector jointPos = new PVector();
 	PVector com = new PVector();
 	PVector com2d = new PVector();
+	  
 	
 public MyProcessingSketch(){ 
 	this.setup();
@@ -15,6 +17,7 @@ public MyProcessingSketch(){
 	public void setup() {
 		
 		size(640, 480);
+		
 		//se crea objeto SimpleOpenNI
 		context = new SimpleOpenNI(this);
 		// Habilito sensor de profundidad
@@ -24,11 +27,13 @@ public MyProcessingSketch(){
 
 	}
 
+
+
 	public void draw() {
 		
 		 
 		context.startTrackingSkeleton(1);
-		PImage depth = context.depthImage();
+		 PImage depth = context.depthImage();
 		image(depth, 0, 0);
 		IntVector blabla = new IntVector();
 		context.update();
@@ -47,18 +52,19 @@ public MyProcessingSketch(){
 
 			fill(0, 255, 100);
 			// text(Integer.toString(userId),com2d.x,com2d.y);
-		}
+	}
 		if (blabla.size() > 0) {
 			// get the first user
 			int userId2 = blabla.get(0);
 
 			context.getJointPositionSkeleton(userId2,SimpleOpenNI.SKEL_RIGHT_HAND, jointPos);
 			PVector convertedRightHand = new PVector();
-			// println(jointPos);
+			
 
 			context.convertRealWorldToProjective(jointPos, convertedRightHand);
 			fill(255, 0, 0);
 			ellipse(convertedRightHand.x, convertedRightHand.y, 25, 25);
+			//println(convertedRightHand.x);
 
 		}
 		
